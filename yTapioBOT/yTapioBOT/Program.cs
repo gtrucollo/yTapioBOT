@@ -2,11 +2,19 @@
 {
     using System;
 
-    class Program
+    /// <summary>
+    /// Classe Program
+    /// </summary>
+    public sealed class Program
     {
-        public static void Main(string[] args)
+        #region Métodos
+        /// <summary>
+        /// Método Main
+        /// </summary>
+        public static void Main()
         {
             Console.WriteLine("Hello World!");
         }
+        #endregion
     }
 }
