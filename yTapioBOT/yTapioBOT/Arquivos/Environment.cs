@@ -16,6 +16,16 @@
         public string TwitchUserName { get; set; }
 
         /// <summary>
+        /// Obtém ou define TwitchClientId
+        /// </summary>
+        public string TwitchClientId { get; set; }
+
+        /// <summary>
+        /// Obtém ou define TwitchAcessToken
+        /// </summary>
+        public string TwitchAcessToken { get; set; }
+
+        /// <summary>
         /// Obtém ou define TwitchAccountToken
         /// </summary>
         public string TwitchToken { get; set; }

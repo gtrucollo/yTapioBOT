@@ -4,6 +4,7 @@
     using System.Linq;
     using System.Reflection;
     using Base;
+    using TwitchLib.Api;
     using TwitchLib.Client;
     using TwitchLib.Client.Events;
     using TwitchLib.Client.Models;
@@ -18,6 +19,11 @@
         /// Controle para Canal
         /// </summary>
         private TwitchClient client;
+
+        /// <summary>
+        /// Controle para twitch
+        /// </summary>
+        private TwitchAPI twitch;
         #endregion
 
         #region Construtor
@@ -32,6 +38,11 @@
             // Iniciar
             this.client = new TwitchClient();
             this.client.Initialize(new ConnectionCredentials(service.User, service.Token), channel);
+
+            // API
+            this.twitch = new TwitchAPI();
+            this.twitch.Settings.ClientId = service.ClientId;
+            this.twitch.Settings.AccessToken = service.AcessToken;
 
             // Atualizar
             this.client.AddChatCommandIdentifier('!');
