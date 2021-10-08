@@ -42,7 +42,7 @@
             // Validar
             if (string.IsNullOrWhiteSpace(this.Nome))
             {
-                this.Canal.SendChannelMessage("Argumentos inválidos, não foi informado o nome do usuário");
+                this.Canal.SendChannelMessage("Argumentos inválidos, não foi informado o nome do usuário.");
                 return;
             }
 

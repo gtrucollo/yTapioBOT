@@ -1,6 +1,8 @@
 ﻿namespace yTapioBOT.Servicos.Twitch
 {
     using System;
+    using System.Linq;
+    using System.Reflection;
     using Base;
     using TwitchLib.Client;
     using TwitchLib.Client.Events;
@@ -146,6 +148,41 @@
         /// <param name="e">Parâmetro OnChatCommandReceivedArgs</param>
         private void Client_OnChatCommandReceived(object sender, OnChatCommandReceivedArgs e)
         {
+            try
+            {
+                // Relação de comandos
+                string[] relacaoArgumentos = e.Command.ArgumentsAsList.Where(x => !string.IsNullOrEmpty(x)).ToArray();
+
+                // Obter classe
+                Type typeClasseComando = Assembly.GetAssembly(typeof(ComandoBase))
+                    .GetTypes()
+                    .Where(x => x.GetCustomAttribute<ComandoBase.IdAttribute>()?.Id == e.Command.CommandIdentifier)
+                    .Where(x => x.GetCustomAttribute<ComandoBase.NomeAttribute>(true)?.Nome == e.Command.CommandText)
+                    .Select(x => x)
+                    .FirstOrDefault();
+                if (typeClasseComando == null)
+                {
+                    throw new Exception("Nenhuma implementação foi localizada.");
+                }
+
+                // Instânciar classe
+                if (Activator.CreateInstance(typeClasseComando, this, relacaoArgumentos) is not ComandoBase classeComando)
+                {
+                    throw new Exception("Não foi possivel instânciar a classe");
+                }
+
+                // Executar
+                classeComando.Executar();
+            }
+            catch (Exception exp)
+            {
+                Console.WriteLine(string.Format(
+                   "Não foi possivel executar o comando: {1}{0}" +
+                   "Detalhes .: {2}{0}",
+                   Environment.NewLine,
+                   e.Command.CommandText,
+                   exp.Message));
+            }
         }
         #endregion
         #endregion
