@@ -13,4 +13,8 @@
     <PackageReference Include="TwitchLib.PubSub" Version="3.2.3" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Servicos\Twitch\Comandos\BancoDados\" />
+  </ItemGroup>
+
 </Project>
