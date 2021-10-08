@@ -1,18 +1,18 @@
-﻿namespace yTapioBOT.Servicos.Base.Comandos
+﻿namespace yTapioBOT.Servicos.Base.Comandos.Estaticos
 {
     /// <summary>
-    /// Classe RemoverBase
+    /// Classe AdicionarBase
     /// </summary>
-    [Id('-')]
-    public abstract class RemoverBase : ComandoBase
+    [Id('+')]
+    public abstract class AdicionarBase : ComandoBase
     {
         #region Construtor
         /// <summary>
-        /// Incia uma nova instância de <seealso cref="RemoverBase"/>
+        /// Incia uma nova instância de <seealso cref="AdicionarBase"/>
         /// </summary>
         /// <param name="canal">Objeto com as informações do canal</param>
         /// <param name="argumentos">Relação de argumentos do comando</param>
-        public RemoverBase(CanalBase canal, params string[] argumentos)
+        public AdicionarBase(CanalBase canal, params string[] argumentos)
             : base(canal, argumentos)
         {
         }
