@@ -32,6 +32,24 @@
                 return this.Argumentos.FirstOrDefault();
             }
         }
+
+        /// <summary>
+        /// Obtém Tempo
+        /// </summary>
+        private string Tempo
+        {
+            get
+            {
+                // Validar
+                if (this.Argumentos.Length < 2)
+                {
+                    return "1";
+                }
+
+                // Retorno
+                return this.Argumentos[1];
+            }
+        }
         #endregion
 
         #region Métodos
@@ -47,7 +65,7 @@
             }
 
             // Executar
-            this.Canal.SendChannelMessage(string.Format("/timeout {0}", this.Nome));
+            this.Canal.SendChannelMessage(string.Format("/timeout {0} {1}", this.Nome, this.Tempo));
         }
         #endregion
         #endregion
