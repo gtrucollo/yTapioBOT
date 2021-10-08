@@ -30,6 +30,13 @@
             // Iniciar
             this.client = new TwitchClient();
             this.client.Initialize(new ConnectionCredentials(service.User, service.Token), channel);
+
+            // Atualizar
+            this.client.AddChatCommandIdentifier('!');
+            this.client.AddChatCommandIdentifier('-');
+            this.client.AddChatCommandIdentifier('+');
+
+            // Eventos
             this.client.OnConnected += this.Client_OnConnected;
             this.client.OnFailureToReceiveJoinConfirmation += this.Client_OnFailureToReceiveJoinConfirmation;
             this.client.OnConnectionError += this.Client_OnConnectionError;
