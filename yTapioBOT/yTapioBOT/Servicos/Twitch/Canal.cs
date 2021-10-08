@@ -150,8 +150,11 @@
         {
             try
             {
-                // Relação de comandos
-                string[] relacaoArgumentos = e.Command.ArgumentsAsList.Where(x => !string.IsNullOrEmpty(x)).ToArray();
+                // Validar
+                if (string.IsNullOrWhiteSpace(e.Command.CommandText))
+                {
+                    this.SendChannelMessage("Argumentos inválidos, não foi informado o nome do comando.");
+                }
 
                 // Obter classe
                 Type typeClasseComando = Assembly.GetAssembly(typeof(ComandoBase))
@@ -166,7 +169,8 @@
                 }
 
                 // Instânciar classe
-                if (Activator.CreateInstance(typeClasseComando, this, relacaoArgumentos) is not ComandoBase classeComando)
+                string[] argumentos = e.Command.ArgumentsAsList.Where(x => !string.IsNullOrEmpty(x)).ToArray();
+                if (Activator.CreateInstance(typeClasseComando, this, argumentos) is not ComandoBase classeComando)
                 {
                     throw new Exception("Não foi possivel instânciar a classe");
                 }
