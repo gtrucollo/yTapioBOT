@@ -33,7 +33,7 @@
         protected string[] Argumentos { get; }
 
         /// <summary>
-        /// Obtém um valor que indica se é somente o comando é somente para moderadores
+        /// Obtém um valor que indica se o comando é somente para moderadores
         /// </summary>
         protected virtual bool Moderador
         {
@@ -47,11 +47,11 @@
         #region Métodos
         #region Públicos
         /// <summary>
-        /// Executar
+        /// Executar ações do comando
         /// </summary>
-        /// <param name="channel">Objeto Services.ChannelBase</param>
-        /// <param name="relacaoArgumentos">Relação de argumentos do comando</param>
-        public abstract void Executar(CanalBase channel, params string[] relacaoArgumentos);
+        public virtual void Executar()
+        {
+        }
         #endregion
         #endregion
 
