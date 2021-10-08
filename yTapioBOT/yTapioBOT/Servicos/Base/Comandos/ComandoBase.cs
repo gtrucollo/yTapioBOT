@@ -91,10 +91,10 @@
             /// <summary>
             /// Inicia uma nova Instância de <seealso cref="NomeAttribute"/>
             /// </summary>
-            /// <param name="name">Nome do comando</param>
-            public NomeAttribute(string name)
+            /// <param name="nome">Nome do comando</param>
+            public NomeAttribute(string nome)
             {
-                this.Name = name;
+                this.Nome = nome;
             }
             #endregion
 
@@ -102,7 +102,7 @@
             /// <summary>
             /// Obtém ou define Id
             /// </summary>
-            public string Name { get; set; }
+            public string Nome { get; set; }
             #endregion
         }
         #endregion
