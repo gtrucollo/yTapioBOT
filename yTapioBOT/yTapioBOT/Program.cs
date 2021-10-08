@@ -1,6 +1,7 @@
 ﻿namespace yTapioBOT
 {
     using System;
+    using System.Diagnostics;
 
     /// <summary>
     /// Classe Program
@@ -13,7 +14,24 @@
         /// </summary>
         public static void Main()
         {
-            Console.WriteLine("Hello World!");
+            try
+            {
+                // Iniciar serviços
+                new Servicos.Twitch.Servico(Propriedades.Env.TwitchUserName, Propriedades.Env.TwitchToken).Executar();
+            }
+            catch (Exception exp)
+            {
+                Console.WriteLine(string.Format(
+                    "Ocorreu um erro não tratado na execução da aplicacação.{0}" +
+                    "Detalhes do erro .: {1}",
+                    Environment.NewLine,
+                    exp.Message));
+            }
+            finally
+            {
+                // Aguardar procoesso ser finalizado
+                Process.GetCurrentProcess().WaitForExit();
+            }
         }
         #endregion
     }

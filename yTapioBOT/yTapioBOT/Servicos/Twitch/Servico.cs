@@ -37,6 +37,8 @@
         /// <inheritdoc />
         public override void Executar()
         {
+            this.ListChannel.Add(new Canal("yTapioca", this));
+
             // Executar
             foreach (Canal channel in this.ListChannel)
             {
