@@ -17,7 +17,7 @@
             try
             {
                 // Iniciar serviços
-                new Servicos.Twitch.Servico(Propriedades.Env.TwitchUserName, Propriedades.Env.TwitchToken, Propriedades.Env.TwitchClientId, Propriedades.Env.TwitchAcessToken).Executar();
+                new Servicos.Twitch.Servico(Propriedades.Env.TwitchUserName, Propriedades.Env.TwitchToken).Executar();
             }
             catch (Exception exp)
             {

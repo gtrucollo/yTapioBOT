@@ -26,6 +26,11 @@
         public string TwitchAcessToken { get; set; }
 
         /// <summary>
+        /// Obtém ou define TwitchRefreshToken
+        /// </summary>
+        public string TwitchRefreshToken { get; set; }
+
+        /// <summary>
         /// Obtém ou define TwitchAccountToken
         /// </summary>
         public string TwitchToken { get; set; }

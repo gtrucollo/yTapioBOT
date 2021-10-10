@@ -4,10 +4,6 @@
     using System.Linq;
     using System.Reflection;
     using Base;
-    using TwitchLib.Api;
-    using TwitchLib.Client;
-    using TwitchLib.Client.Events;
-    using TwitchLib.Client.Models;
 
     /// <summary>
     /// Classe Canal
@@ -41,8 +37,8 @@
 
             // API
             this.twitch = new TwitchAPI();
-            this.twitch.Settings.ClientId = service.ClientId;
-            this.twitch.Settings.AccessToken = service.AcessToken;
+            this.twitch.Settings.ClientId = Propriedades.Env.TwitchClientId;
+            this.twitch.Settings.AccessToken = this.twitch.Auth.GetAccessToken(Propriedades.Env.TwitchRefreshToken);
 
             // Atualizar
             this.client.AddChatCommandIdentifier('!');
@@ -56,6 +52,9 @@
             this.client.OnMessageReceived += this.Client_OnMessageReived;
             this.client.OnChatCommandReceived += this.Client_OnChatCommandReceived;
             this.client.OnJoinedChannel += this.Client_OnJoinedChannel;
+
+
+            this.GetChannelStatus();
         }
         #endregion
 
@@ -97,6 +96,11 @@
         public override void SendChannelMessage(string message)
         {
             this.client.SendMessage(this.Name, message);
+        }
+
+        public string GetChannelStatus()
+        {
+            return this.twitch.V5.Channels.GetChannelAsync(this.client.ConnectionCredentials.TwitchOAuth).Result.Status;
         }
         #endregion
 

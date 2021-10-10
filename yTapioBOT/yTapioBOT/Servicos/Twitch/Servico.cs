@@ -14,11 +14,9 @@
         /// </summary>
         /// <param name="user">Controle para o usuario</param>
         /// <param name="password">Controle para a senha</param>
-        public Servico(string user, string password, string clientId, string acessToken)
+        public Servico(string user, string password)
             : base(user, password)
         {
-            this.ClientId = clientId;
-            this.AcessToken = acessToken;
         }
         #endregion
 
