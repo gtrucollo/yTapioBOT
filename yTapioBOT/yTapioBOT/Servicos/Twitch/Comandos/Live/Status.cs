@@ -6,7 +6,7 @@
     /// Classe Status
     /// </summary>
     [Nome("status")]
-    public sealed class Status : AdicionarBase
+    public sealed class Status : LiveBase
     {
         #region Construtor
         /// <summary>
