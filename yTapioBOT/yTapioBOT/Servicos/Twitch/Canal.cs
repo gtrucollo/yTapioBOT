@@ -4,6 +4,10 @@
     using System.Linq;
     using System.Reflection;
     using Base;
+    using TwitchLib.Api;
+    using TwitchLib.Client;
+    using TwitchLib.Client.Events;
+    using TwitchLib.Client.Models;
 
     /// <summary>
     /// Classe Canal
