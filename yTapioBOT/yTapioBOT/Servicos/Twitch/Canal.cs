@@ -23,7 +23,7 @@
         /// <summary>
         /// Controle para twitch
         /// </summary>
-        private TwitchAPI twitch;
+        private readonly TwitchAPI twitch;
         #endregion
 
         #region Construtor
@@ -56,9 +56,6 @@
             this.client.OnMessageReceived += this.Client_OnMessageReived;
             this.client.OnChatCommandReceived += this.Client_OnChatCommandReceived;
             this.client.OnJoinedChannel += this.Client_OnJoinedChannel;
-
-
-            this.GetChannelStatus();
         }
         #endregion
 
@@ -77,7 +74,7 @@
             }
 
             // Atualizar
-            this.client.Disconnect();
+            this.client?.Disconnect();
             this.client = null;
         }
         #endregion
@@ -100,11 +97,6 @@
         public override void SendChannelMessage(string message)
         {
             this.client.SendMessage(this.Name, message);
-        }
-
-        public string GetChannelStatus()
-        {
-            return this.twitch.V5.Channels.GetChannelAsync(this.client.ConnectionCredentials.TwitchOAuth).Result.Status;
         }
         #endregion
 
