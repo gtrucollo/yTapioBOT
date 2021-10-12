@@ -6,7 +6,7 @@
     /// <summary>
     /// Classe Remover
     /// </summary>
-    [Nome("p")]
+    [Nome("p", "Remove se existir o timeout no usuário informado")]
     public sealed class Remover : RemoverBase
     {
         #region Construtor

@@ -6,7 +6,7 @@
     /// <summary>
     /// Classe Adicionar
     /// </summary>
-    [Nome("p")]
+    [Nome("p", "Aplica um timeout no usuário informado")]
     public sealed class Adicionar : AdicionarBase
     {
         #region Construtor

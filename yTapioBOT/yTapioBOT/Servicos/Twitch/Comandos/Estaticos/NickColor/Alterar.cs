@@ -6,7 +6,7 @@
     /// <summary>
     /// Classe Alterar
     /// </summary>
-    [Nome("c")]
+    [Nome("c", "Altera a cor do meu nick")]
     public sealed class Alterar : AdicionarBase
     {
         #region Construtor

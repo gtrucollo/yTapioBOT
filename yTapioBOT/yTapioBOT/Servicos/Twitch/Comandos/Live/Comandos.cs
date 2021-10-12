@@ -5,8 +5,8 @@
     /// <summary>
     /// Classe Status
     /// </summary>
-    [Nome("status", "Faz alguma coisa ai que ainda não sei nessa porra")]
-    public sealed class Status : LiveBase
+    [Nome("comandos", "Mostra todos os comandos disponiveis")]
+    public sealed class Comandos : LiveBase
     {
         #region Construtor
         /// <summary>
@@ -14,7 +14,7 @@
         /// </summary>
         /// <param name="canal">Objeto com as informações do canal</param>
         /// <param name="argumentos">Relação de argumentos do comando</param>
-        public Status(Canal canal, params string[] argumentos)
+        public Comandos(Canal canal, params string[] argumentos)
             : base(canal, argumentos)
         {
         }
@@ -25,7 +25,7 @@
         /// <inheritdoc/>
         public override void Executar()
         {
-
+            // TODO: Implementar comando
         }
         #endregion
         #endregion

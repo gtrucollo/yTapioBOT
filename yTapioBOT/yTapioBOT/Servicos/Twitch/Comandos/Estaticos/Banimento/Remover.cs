@@ -6,7 +6,7 @@
     /// <summary>
     /// Classe Remover
     /// </summary>
-    [Nome("b")]
+    [Nome("b", "Remove o banimento do usuário informado")]
     public sealed class Remover : RemoverBase
     {
         #region Construtor

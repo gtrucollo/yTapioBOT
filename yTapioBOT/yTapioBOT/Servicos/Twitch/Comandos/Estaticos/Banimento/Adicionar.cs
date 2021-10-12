@@ -6,7 +6,7 @@
     /// <summary>
     /// Classe Adicionar
     /// </summary>
-    [Nome("b")]
+    [Nome("b", "Aplica um banimento para o usuário informado")]
     public sealed class Adicionar : AdicionarBase
     {
         #region Construtor
