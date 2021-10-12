@@ -1,12 +1,13 @@
 ﻿namespace yTapioBOT.Servicos.Twitch.Comandos.Estaticos.Banimento
 {
     using System.Linq;
+    using Base;
 
     /// <summary>
-    /// Classe Adicionar
+    /// Classe Remover
     /// </summary>
-    [Comando(Id.Adicionar, "b", "Aplica um banimento para o usuário informado")]
-    public sealed class Adicionar : ComandoBase
+    [Comando(Id.Remover, "b", "Remove o banimento do usuário informado")]
+    public sealed class Remover : ComandoBase
     {
         #region Construtor
         /// <summary>
@@ -14,7 +15,7 @@
         /// </summary>
         /// <param name="canal">Objeto com as informações do canal</param>
         /// <param name="argumentos">Relação de argumentos do comando</param>
-        public Adicionar(Canal canal, params string[] argumentos)
+        public Remover(Canal canal, params string[] argumentos)
             : base(canal, argumentos)
         {
         }
@@ -46,7 +47,7 @@
             }
 
             // Executar
-            this.Canal.SendChannelMessage(string.Format("/ban {0}", this.Nome));
+            this.Canal.SendChannelMessage(string.Format("/unban {0}", this.Nome));
         }
         #endregion
         #endregion

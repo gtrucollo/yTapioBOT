@@ -1,9 +1,8 @@
-﻿namespace yTapioBOT.Servicos
+﻿namespace yTapioBOT.Servicos.Base
 {
     using System;
     using System.ComponentModel;
-    using Base;
-    using yTapioBOT.Library;
+    using Library;
 
     /// <summary>
     /// Classe ComandoBase

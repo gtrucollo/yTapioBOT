@@ -14,9 +14,13 @@
         /// </summary>
         /// <param name="user">Controle para o usuario</param>
         /// <param name="password">Controle para a senha</param>
-        public Servico(string user, string password)
+        /// <param name="clientId">Controle para o clientId</param>
+        /// <param name="refreshToken">Controle para o refreshToken</param>
+        public Servico(string user, string password, string clientId, string refreshToken)
             : base(user, password)
         {
+            this.ClientId = clientId;
+            this.RefreshToken = refreshToken;
         }
         #endregion
 
@@ -39,7 +43,7 @@
         /// <summary>
         /// Obtém AcessToken
         /// </summary>
-        public string AcessToken { get; }
+        public string RefreshToken { get; }
         #endregion
 
         #region Métodos

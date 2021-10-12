@@ -1,6 +1,7 @@
 ﻿namespace yTapioBOT.Servicos.Twitch.Comandos.Estaticos.Banimento
 {
     using System.Linq;
+    using Base;
 
     /// <summary>
     /// Classe CorNick

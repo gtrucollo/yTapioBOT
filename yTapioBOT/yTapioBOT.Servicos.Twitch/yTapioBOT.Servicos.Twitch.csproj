@@ -1,0 +1,22 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Folder Include="Comandos\BancoDados\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="TwitchLib" Version="3.2.0" />
+    <PackageReference Include="TwitchLib.Api" Version="3.3.0" />
+    <PackageReference Include="TwitchLib.Client" Version="3.2.4" />
+    <PackageReference Include="TwitchLib.PubSub" Version="3.2.3" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\yTapioBOT.Servicos.Base\yTapioBOT.Servicos.Base.csproj" />
+  </ItemGroup>
+
+</Project>

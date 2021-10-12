@@ -5,7 +5,11 @@ VisualStudioVersion = 16.0.31727.386
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "yTapioBOT", "yTapioBOT\yTapioBOT.csproj", "{FF2AAA63-B33E-4F04-B5D3-3E5498191EF8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "yTapioBOT.Library", "yTapioBOT.Library\yTapioBOT.Library.csproj", "{990CFD76-5B5A-4660-87C3-301DB9BF9C81}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "yTapioBOT.Library", "yTapioBOT.Library\yTapioBOT.Library.csproj", "{990CFD76-5B5A-4660-87C3-301DB9BF9C81}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "yTapioBOT.Servicos.Twitch", "yTapioBOT.Servicos.Twitch\yTapioBOT.Servicos.Twitch.csproj", "{13FAA309-A87B-46FA-8781-5A84D2AE306B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "yTapioBOT.Servicos.Base", "yTapioBOT.Servicos.Base\yTapioBOT.Servicos.Base.csproj", "{3E517735-8EBB-4E36-9A3C-546C26FB2107}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +25,14 @@ Global
 		{990CFD76-5B5A-4660-87C3-301DB9BF9C81}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{990CFD76-5B5A-4660-87C3-301DB9BF9C81}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{990CFD76-5B5A-4660-87C3-301DB9BF9C81}.Release|Any CPU.Build.0 = Release|Any CPU
+		{13FAA309-A87B-46FA-8781-5A84D2AE306B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{13FAA309-A87B-46FA-8781-5A84D2AE306B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{13FAA309-A87B-46FA-8781-5A84D2AE306B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{13FAA309-A87B-46FA-8781-5A84D2AE306B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3E517735-8EBB-4E36-9A3C-546C26FB2107}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3E517735-8EBB-4E36-9A3C-546C26FB2107}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3E517735-8EBB-4E36-9A3C-546C26FB2107}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3E517735-8EBB-4E36-9A3C-546C26FB2107}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

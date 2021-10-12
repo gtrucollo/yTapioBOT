@@ -30,8 +30,8 @@
         /// <summary>
         /// Inicia uma nova instância de <seealso cref="Canal"/>
         /// </summary>
-        /// <param name="Canal">Controle para o usuario</param>
-        /// <param name="password">Controle para a senha</param>
+        /// <param name="channel">Controle para o canal a ser utilizado</param>
+        /// <param name="service">Controle do serviço do bot</param>
         public Canal(string channel, Servico service)
             : base(channel)
         {
@@ -41,8 +41,8 @@
 
             // API
             this.twitch = new TwitchAPI();
-            this.twitch.Settings.ClientId = Propriedades.Env.TwitchClientId;
-            this.twitch.Settings.AccessToken = this.twitch.Auth.GetAccessToken(Propriedades.Env.TwitchRefreshToken);
+            this.twitch.Settings.ClientId = service.ClientId;
+            this.twitch.Settings.AccessToken = this.twitch.Auth.GetAccessToken(service.RefreshToken);
 
             // Atualizar
             this.client.AddChatCommandIdentifier('!');
@@ -169,7 +169,7 @@
                 }
 
                 // Obter classe
-                Type typeClasseComando = Assembly.GetAssembly(typeof(ComandoBase))
+                Type typeClasseComando = Assembly.GetAssembly(this.GetType())
                     .GetTypes()
                     .Where(x => x.GetCustomAttribute<ComandoBase.ComandoAttribute>()?.IdDescricao == e.Command.CommandIdentifier.ToString())
                     .Where(x => x.GetCustomAttribute<ComandoBase.ComandoAttribute>(true)?.Nome == e.Command.CommandText)

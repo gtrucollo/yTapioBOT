@@ -1,5 +1,7 @@
 ﻿namespace yTapioBOT.Servicos.Twitch.Comandos.Live
 {
+    using Base;
+
     /// <summary>
     /// Classe Status
     /// </summary>
