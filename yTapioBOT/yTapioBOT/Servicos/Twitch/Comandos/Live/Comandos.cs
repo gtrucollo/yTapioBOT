@@ -22,6 +22,11 @@
         }
         #endregion
 
+        #region Propriedades
+        /// <inheritdoc/>
+        protected override bool Moderador => false;
+        #endregion
+
         #region Métodos
         #region Públicos
         /// <inheritdoc/>

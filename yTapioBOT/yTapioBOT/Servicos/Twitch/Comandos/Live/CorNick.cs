@@ -21,6 +21,9 @@
         #endregion
 
         #region Propriedades
+        /// <inheritdoc/>
+        protected override bool Moderador => false;
+
         /// <summary>
         /// Obtém Cor
         /// </summary>
