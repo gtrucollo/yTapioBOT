@@ -23,7 +23,7 @@
 
         #region Propriedades
         /// <inheritdoc/>
-        protected override bool Moderador => false;
+        public override bool Moderador => false;
 
         /// <summary>
         /// Obtém Cor

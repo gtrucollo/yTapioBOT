@@ -169,26 +169,41 @@
                 }
 
                 // Obter classe
-                Type typeClasseComando = Assembly.GetAssembly(this.GetType())
+                Type classeComando = Assembly.GetAssembly(this.GetType())
                     .GetTypes()
                     .Where(x => x.GetCustomAttribute<ComandoBase.ComandoAttribute>()?.IdDescricao == e.Command.CommandIdentifier.ToString())
                     .Where(x => x.GetCustomAttribute<ComandoBase.ComandoAttribute>(true)?.Nome == e.Command.CommandText)
                     .Select(x => x)
                     .FirstOrDefault();
-                if (typeClasseComando == null)
+                if (classeComando == null)
                 {
                     throw new Exception("Nenhuma implementação foi localizada.");
                 }
 
                 // Instânciar classe
                 string[] argumentos = e.Command.ArgumentsAsList.Where(x => !string.IsNullOrEmpty(x)).ToArray();
-                if (Activator.CreateInstance(typeClasseComando, this, argumentos) is not ComandoBase classeComando)
+                if (Activator.CreateInstance(classeComando, this, argumentos) is not ComandoBase comando)
                 {
                     throw new Exception("Não foi possivel instânciar a classe");
                 }
 
                 // Executar
-                classeComando.Executar();
+                switch (!comando.Moderador)
+                {
+                    case true:
+                        comando.Executar();
+                        break;
+
+                    default:
+                        // Validar execução
+                        if ((!e.Command.ChatMessage.IsBroadcaster) && (!e.Command.ChatMessage.IsModerator))
+                        {
+                            return;
+                        }
+
+                        comando.Executar();
+                        break;
+                }
             }
             catch (Exception exp)
             {

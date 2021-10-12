@@ -50,6 +50,11 @@
 
         #region Propriedades
         /// <summary>
+        /// Obtém um valor que indica se o comando é somente para moderadores
+        /// </summary>
+        public virtual bool Moderador => true;
+
+        /// <summary>
         /// Obtém Canal
         /// </summary>
         protected CanalBase Canal { get; }
@@ -58,17 +63,6 @@
         /// Obém Argumentos
         /// </summary>
         protected string[] Argumentos { get; }
-
-        /// <summary>
-        /// Obtém um valor que indica se o comando é somente para moderadores
-        /// </summary>
-        protected virtual bool Moderador
-        {
-            get
-            {
-                return true;
-            }
-        }
         #endregion
 
         #region Métodos
