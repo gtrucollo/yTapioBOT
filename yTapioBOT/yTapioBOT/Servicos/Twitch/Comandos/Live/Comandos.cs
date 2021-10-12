@@ -1,5 +1,9 @@
 ﻿namespace yTapioBOT.Servicos.Twitch.Comandos.Live
 {
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Reflection;
+
     /// <summary>
     /// Classe Status
     /// </summary>
@@ -23,7 +27,26 @@
         /// <inheritdoc/>
         public override void Executar()
         {
-            // TODO: Implementar comando
+            IList<ComandoAttribute> listaComandos = Assembly.GetAssembly(typeof(ComandoBase))
+                .GetTypes()
+                .Where(x => x.GetCustomAttributes<ComandoAttribute>(true).Any())
+                .Select(x => x.GetCustomAttributes<ComandoAttribute>(true).FirstOrDefault())
+                .ToList();
+            if (listaComandos.Count <= 0)
+            {
+                this.Canal.SendChannelMessage("Nenhuma implementação de comandos foi localizada.");
+                return;
+            }
+
+            // Atualizar
+            string mensagem = string.Empty;
+            foreach (ComandoAttribute comando in listaComandos)
+            {
+                mensagem += string.Format("{0}{1} - ({2})", comando.IdDescricao, comando.Nome, comando.Descricao);
+            }
+
+            // Mensagem
+            this.Canal.SendChannelMessage(mensagem);
         }
         #endregion
         #endregion
