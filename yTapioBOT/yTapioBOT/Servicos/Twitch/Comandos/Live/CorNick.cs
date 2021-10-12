@@ -1,13 +1,12 @@
 ﻿namespace yTapioBOT.Servicos.Twitch.Comandos.Estaticos.Banimento
 {
     using System.Linq;
-    using Base.Comandos.Estaticos;
 
     /// <summary>
-    /// Classe Alterar
+    /// Classe CorNick
     /// </summary>
-    [Nome("c", "Altera a cor do meu nick")]
-    public sealed class Alterar : AdicionarBase
+    [Comando(Id.Exclamacao, "c", "Altera a cor do meu nick")]
+    public sealed class CorNick : ComandoBase
     {
         #region Construtor
         /// <summary>
@@ -15,7 +14,7 @@
         /// </summary>
         /// <param name="canal">Objeto com as informações do canal</param>
         /// <param name="argumentos">Relação de argumentos do comando</param>
-        public Alterar(Canal canal, params string[] argumentos)
+        public CorNick(Canal canal, params string[] argumentos)
             : base(canal, argumentos)
         {
         }

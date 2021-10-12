@@ -1,12 +1,10 @@
 ﻿namespace yTapioBOT.Servicos.Twitch.Comandos.Live
 {
-    using Base.Comandos.Estaticos;
-
     /// <summary>
     /// Classe Status
     /// </summary>
-    [Nome("comandos", "Mostra todos os comandos disponiveis")]
-    public sealed class Comandos : LiveBase
+    [Comando(Id.Exclamacao, "comandos", "Mostra todos os comandos disponiveis")]
+    public sealed class Comandos : ComandoBase
     {
         #region Construtor
         /// <summary>

@@ -1,13 +1,12 @@
 ﻿namespace yTapioBOT.Servicos.Twitch.Comandos.Estaticos.Timeout
 {
     using System.Linq;
-    using Base.Comandos.Estaticos;
 
     /// <summary>
     /// Classe Remover
     /// </summary>
-    [Nome("p", "Remove se existir o timeout no usuário informado")]
-    public sealed class Remover : RemoverBase
+    [Comando(Id.Remover, "p", "Remove se existir o timeout no usuário informado")]
+    public sealed class Remover : ComandoBase
     {
         #region Construtor
         /// <summary>

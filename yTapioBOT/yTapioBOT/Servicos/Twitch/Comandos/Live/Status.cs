@@ -1,12 +1,10 @@
 ﻿namespace yTapioBOT.Servicos.Twitch.Comandos.Live
 {
-    using Base.Comandos.Estaticos;
-
     /// <summary>
     /// Classe Status
     /// </summary>
-    [Nome("status", "Faz alguma coisa ai que ainda não sei nessa porra")]
-    public sealed class Status : LiveBase
+    [Comando(Id.Exclamacao, "status", "Faz alguma coisa ai que ainda não sei nessa porra")]
+    public sealed class Status : ComandoBase
     {
         #region Construtor
         /// <summary>
@@ -25,7 +23,7 @@
         /// <inheritdoc/>
         public override void Executar()
         {
-
+            // TODO: Implementar comando
         }
         #endregion
         #endregion

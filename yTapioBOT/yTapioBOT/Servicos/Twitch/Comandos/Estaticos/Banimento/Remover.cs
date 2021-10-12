@@ -1,13 +1,12 @@
 ﻿namespace yTapioBOT.Servicos.Twitch.Comandos.Estaticos.Banimento
 {
     using System.Linq;
-    using Base.Comandos.Estaticos;
 
     /// <summary>
     /// Classe Remover
     /// </summary>
-    [Nome("b", "Remove o banimento do usuário informado")]
-    public sealed class Remover : RemoverBase
+    [Comando(Id.Remover, "b", "Remove o banimento do usuário informado")]
+    public sealed class Remover : ComandoBase
     {
         #region Construtor
         /// <summary>

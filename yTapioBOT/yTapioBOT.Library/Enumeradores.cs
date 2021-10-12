@@ -3,6 +3,7 @@
     using System;
     using System.ComponentModel;
     using System.Linq;
+    using System.Reflection;
 
     /// <summary>
     /// Classe Enumeradores
@@ -17,18 +18,23 @@
         /// <returns>A descrição se encontrada</returns>
         public static string ObterDescricao(Enum enumerador)
         {
-            DescriptionAttribute descricao = enumerador
-                .GetType()
+            FieldInfo field = enumerador.GetType().GetField(enumerador.ToString());
+            if (field == null)
+            {
+                return string.Empty;
+            }
+
+            DescriptionAttribute atributo = field
                 .GetCustomAttributes(typeof(DescriptionAttribute), false)
                 .Cast<DescriptionAttribute>()
                 .FirstOrDefault();
-            if (descricao == null)
+            if (atributo == null)
             {
                 return string.Empty;
             }
 
             // Retorno
-            return descricao.Description;
+            return atributo.Description;
         }
         #endregion
     }

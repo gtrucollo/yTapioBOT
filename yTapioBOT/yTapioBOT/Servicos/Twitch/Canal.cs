@@ -170,8 +170,8 @@
                 // Obter classe
                 Type typeClasseComando = Assembly.GetAssembly(typeof(ComandoBase))
                     .GetTypes()
-                    .Where(x => x.GetCustomAttribute<ComandoBase.IdAttribute>()?.Id == e.Command.CommandIdentifier)
-                    .Where(x => x.GetCustomAttribute<ComandoBase.NomeAttribute>(true)?.Nome == e.Command.CommandText)
+                    .Where(x => x.GetCustomAttribute<ComandoBase.ComandoAttribute>()?.IdDescricao == e.Command.CommandIdentifier.ToString())
+                    .Where(x => x.GetCustomAttribute<ComandoBase.ComandoAttribute>(true)?.Nome == e.Command.CommandText)
                     .Select(x => x)
                     .FirstOrDefault();
                 if (typeClasseComando == null)

@@ -1,13 +1,12 @@
 ﻿namespace yTapioBOT.Servicos.Twitch.Comandos.Estaticos.Timeout
 {
     using System.Linq;
-    using Base.Comandos.Estaticos;
 
     /// <summary>
     /// Classe Adicionar
     /// </summary>
-    [Nome("p", "Aplica um timeout no usuário informado")]
-    public sealed class Adicionar : AdicionarBase
+    [Comando(Id.Adicionar, "p", "Aplica um timeout no usuário informado")]
+    public sealed class Adicionar : ComandoBase
     {
         #region Construtor
         /// <summary>

@@ -1,13 +1,12 @@
 ﻿namespace yTapioBOT.Servicos.Twitch.Comandos.Estaticos.Banimento
 {
     using System.Linq;
-    using Base.Comandos.Estaticos;
 
     /// <summary>
     /// Classe Adicionar
     /// </summary>
-    [Nome("b", "Aplica um banimento para o usuário informado")]
-    public sealed class Adicionar : AdicionarBase
+    [Comando(Id.Adicionar, "b", "Aplica um banimento para o usuário informado")]
+    public sealed class Adicionar : ComandoBase
     {
         #region Construtor
         /// <summary>
