@@ -165,6 +165,7 @@
                 if (string.IsNullOrWhiteSpace(e.Command.CommandText))
                 {
                     this.SendChannelMessage("Argumentos inválidos, não foi informado o nome do comando.");
+                    return;
                 }
 
                 // Obter classe
