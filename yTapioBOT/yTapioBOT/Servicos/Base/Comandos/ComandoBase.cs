@@ -1,13 +1,41 @@
 ﻿namespace yTapioBOT.Servicos
 {
     using System;
+    using System.ComponentModel;
     using Base;
+    using yTapioBOT.Library;
 
     /// <summary>
     /// Classe ComandoBase
     /// </summary>
     public abstract class ComandoBase
     {
+        #region Enumeradores
+        /// <summary>
+        /// Enumerador Id
+        /// </summary>
+        public enum Id
+        {
+            /// <summary>
+            /// Id !
+            /// </summary>
+            [Description("!")]
+            Exclamacao = 0,
+
+            /// <summary>
+            /// Id +
+            /// </summary>
+            [Description("+")]
+            Adicionar = 1,
+
+            /// <summary>
+            /// Id -
+            /// </summary>
+            [Description("-")]
+            Remover = 2
+        }
+        #endregion
+
         #region Construtor
         /// <summary>
         /// Incia uma nova instância de <seealso cref="ComandoBase"/>
@@ -57,19 +85,23 @@
 
         #region Classes
         /// <summary>
-        /// Classe IdAttribute
+        /// Classe ComandoAttribute
         /// </summary>
         [AttributeUsage(AttributeTargets.Class, AllowMultiple = false)]
-        public class IdAttribute : Attribute
+        public class ComandoAttribute : Attribute
         {
             #region Construtor
             /// <summary>
-            /// Inicia uma nova Instância de <seealso cref="CommandAttribute"/>
+            /// Inicia uma nova Instância de <seealso cref="NomeAttribute"/>
             /// </summary>
-            /// <param name="id">Valor do comando</param>
-            public IdAttribute(char id)
+            /// <param name="id">Enumerador Id</param>
+            /// <param name="nome">Nome do comando</param>
+            /// <param name="complemento">Breve descrição sobre o comando</param>
+            public ComandoAttribute(Id id, string nome, string complemento)
             {
                 this.Id = id;
+                this.Nome = nome;
+                this.Descricao = complemento;
             }
             #endregion
 
@@ -77,30 +109,19 @@
             /// <summary>
             /// Obtém ou define Id
             /// </summary>
-            public char Id { get; set; }
-            #endregion
-        }
+            public Id Id { get; set; }
 
-        /// <summary>
-        /// Classe NomeAttribute
-        /// </summary>
-        [AttributeUsage(AttributeTargets.Class, AllowMultiple = false)]
-        public class NomeAttribute : Attribute
-        {
-            #region Construtor
             /// <summary>
-            /// Inicia uma nova Instância de <seealso cref="NomeAttribute"/>
+            /// Obtém o valor de IdDescricao
             /// </summary>
-            /// <param name="nome">Nome do comando</param>
-            /// <param name="descricao">Breve descrição sobre o comando</param>
-            public NomeAttribute(string nome, string descricao)
+            public string IdDescricao
             {
-                this.Nome = nome;
-                this.Descricao = descricao;
+                get
+                {
+                    return Enumeradores.ObterDescricao(this.Id);
+                }
             }
-            #endregion
 
-            #region Propriedades
             /// <summary>
             /// Obtém ou define Nome
             /// </summary>

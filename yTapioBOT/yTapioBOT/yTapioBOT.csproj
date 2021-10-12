@@ -17,4 +17,8 @@
     <Folder Include="Servicos\Twitch\Comandos\BancoDados\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\yTapioBOT.Library\yTapioBOT.Library.csproj" />
+  </ItemGroup>
+
 </Project>
