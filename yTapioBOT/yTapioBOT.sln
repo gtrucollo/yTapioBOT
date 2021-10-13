@@ -11,6 +11,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "yTapioBOT.Servicos.Twitch",
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "yTapioBOT.Servicos.Base", "yTapioBOT.Servicos.Base\yTapioBOT.Servicos.Base.csproj", "{3E517735-8EBB-4E36-9A3C-546C26FB2107}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "yTapioBOT.Entidade", "yTapioBOT.Entidade\yTapioBOT.Entidade.csproj", "{C0BBD4FF-1D9E-4970-B2F9-A6BB912CF460}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "yTapioBOT.BancoDados", "yTapioBOT.BancoDados\yTapioBOT.BancoDados.csproj", "{24BF7D68-0B54-4597-9CED-6E22CE83E031}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +37,14 @@ Global
 		{3E517735-8EBB-4E36-9A3C-546C26FB2107}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3E517735-8EBB-4E36-9A3C-546C26FB2107}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3E517735-8EBB-4E36-9A3C-546C26FB2107}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C0BBD4FF-1D9E-4970-B2F9-A6BB912CF460}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C0BBD4FF-1D9E-4970-B2F9-A6BB912CF460}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C0BBD4FF-1D9E-4970-B2F9-A6BB912CF460}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C0BBD4FF-1D9E-4970-B2F9-A6BB912CF460}.Release|Any CPU.Build.0 = Release|Any CPU
+		{24BF7D68-0B54-4597-9CED-6E22CE83E031}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{24BF7D68-0B54-4597-9CED-6E22CE83E031}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{24BF7D68-0B54-4597-9CED-6E22CE83E031}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{24BF7D68-0B54-4597-9CED-6E22CE83E031}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
