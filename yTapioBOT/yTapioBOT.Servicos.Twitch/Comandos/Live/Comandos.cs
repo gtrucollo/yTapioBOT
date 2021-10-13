@@ -33,7 +33,7 @@
         /// <inheritdoc/>
         public override void Executar()
         {
-            IList<ComandoAttribute> listaComandos = Assembly.GetAssembly(typeof(ComandoBase))
+            IList<ComandoAttribute> listaComandos = Assembly.GetAssembly(this.GetType())
                 .GetTypes()
                 .Where(x => x.GetCustomAttributes<ComandoAttribute>(true).Any())
                 .Select(x => x.GetCustomAttributes<ComandoAttribute>(true).FirstOrDefault())
