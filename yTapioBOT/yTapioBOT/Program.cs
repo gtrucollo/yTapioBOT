@@ -18,6 +18,7 @@
         {
             try
             {
+                // Banco de dados
                 Sessao.Inicializar(new ServiceCollection(), Propriedades.Env.DatabaseUrl);
 
                 // Iniciar serviços
