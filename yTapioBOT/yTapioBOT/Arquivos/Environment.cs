@@ -36,29 +36,9 @@
         public string TwitchToken { get; set; }
 
         /// <summary>
-        /// Obtém ou define DatabaseHost
+        /// Obtém ou define DatabaseUrl
         /// </summary>
-        public string DatabaseHost { get; set; }
-
-        /// <summary>
-        /// Obtém ou define DatabaseHost
-        /// </summary>
-        public string DatabaseName { get; set; }
-
-        /// <summary>
-        /// Obtém ou define DatabaseHost
-        /// </summary>
-        public string DatabaseUser { get; set; }
-
-        /// <summary>
-        /// Obtém ou define DatabaseHost
-        /// </summary>
-        public string DatabasePassword { get; set; }
-
-        /// <summary>
-        /// Obtém ou define DatabaseHost
-        /// </summary>
-        public string DatabasePort { get; set; }
+        public string DatabaseUrl { get; set; }
         #endregion
 
         #region Métodos

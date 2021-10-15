@@ -2,6 +2,8 @@
 {
     using System;
     using System.Diagnostics;
+    using Microsoft.Extensions.DependencyInjection;
+    using yTapioBOT.BancoDados;
 
     /// <summary>
     /// Classe Program
@@ -16,6 +18,8 @@
         {
             try
             {
+                Sessao.Inicializar(new ServiceCollection(), Propriedades.Env.DatabaseUrl);
+
                 // Iniciar serviços
                 new Servicos.Twitch.Servico(
                     Propriedades.Env.TwitchUserName,

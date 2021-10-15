@@ -10,6 +10,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\yTapioBOT.BancoDados\yTapioBOT.BancoDados.csproj" />
     <ProjectReference Include="..\yTapioBOT.Library\yTapioBOT.Library.csproj" />
     <ProjectReference Include="..\yTapioBOT.Servicos.Twitch\yTapioBOT.Servicos.Twitch.csproj" />
   </ItemGroup>
