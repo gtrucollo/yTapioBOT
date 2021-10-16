@@ -1,7 +1,10 @@
 ﻿namespace yTapioBOT.Servicos.Twitch
 {
+    using System.Collections.Generic;
     using System.Threading.Tasks;
     using Base;
+    using yTapioBOT.BancoDados.Database;
+    using yTapioBOT.Entidade.Database;
 
     /// <summary>
     /// Classe Service
@@ -51,6 +54,9 @@
         /// <inheritdoc />
         public override void Executar()
         {
+            // Selecionar canais
+            IList<Plataforma> listaRetorno = this.Database.Make<PlataformaDb, IList<Plataforma>>(bo => bo.SelecionarTodos());
+
             this.ListChannel.Add(new Canal("yTapioca", this));
 
             // Executar

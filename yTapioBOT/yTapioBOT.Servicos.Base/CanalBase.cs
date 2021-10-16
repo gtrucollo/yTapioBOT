@@ -1,6 +1,8 @@
 ﻿namespace yTapioBOT.Servicos.Base
 {
     using System;
+    using BancoDados;
+    using Database;
 
     /// <summary>
     /// Classe CanalBase
@@ -12,6 +14,11 @@
         /// Controle para channel
         /// </summary>
         private readonly string channel;
+
+        /// <summary>
+        /// Controle para o Banco de Dados
+        /// </summary>
+        private FactoryDatabase database;
         #endregion
 
         #region Construtor
@@ -30,6 +37,23 @@
         /// Obtém Name
         /// </summary>
         public string Name => this.channel;
+
+        // <summary>
+        /// Controle para o banco de dados
+        /// </summary>
+        public FactoryDatabase Database
+        {
+            get
+            {
+                if (this.database == null)
+                {
+                    this.database = new FactoryDatabase(Sessao.SessaoControle);
+                }
+
+                // Retorno
+                return this.database;
+            }
+        }
         #endregion
 
         #region Métodos

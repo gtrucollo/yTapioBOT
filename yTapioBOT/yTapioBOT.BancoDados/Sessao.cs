@@ -99,7 +99,7 @@
         /// </summary>
         /// <param name="bancoDados">Nome do banco de dados</param>
         /// <returns>Se o banco de dados existe</returns>
-        public static bool VerificarBancoDadosExistante(string bancoDados)
+        private static bool VerificarBancoDadosExistante(string bancoDados)
         {
             // Comandos
             using NpgsqlConnection connection = new(Sessao.Url.Replace(string.Format("Database={0};", Sessao.DatabaseName), string.Empty));
@@ -114,7 +114,7 @@
         /// Criar o banco de dados
         /// </summary>
         /// <param name="bancoDados">Nome do banco de dados</param>
-        public static void CriarBancoDados(string bancoDados)
+        private static void CriarBancoDados(string bancoDados)
         {
             // Comando
             using NpgsqlConnection connection = new(Sessao.Url.Replace(string.Format("Database={0};", Sessao.DatabaseName), string.Empty));

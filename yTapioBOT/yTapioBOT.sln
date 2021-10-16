@@ -7,13 +7,15 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "yTapioBOT", "yTapioBOT\yTap
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "yTapioBOT.Library", "yTapioBOT.Library\yTapioBOT.Library.csproj", "{990CFD76-5B5A-4660-87C3-301DB9BF9C81}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "yTapioBOT.Servicos.Twitch", "yTapioBOT.Servicos.Twitch\yTapioBOT.Servicos.Twitch.csproj", "{13FAA309-A87B-46FA-8781-5A84D2AE306B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "yTapioBOT.Servicos.Twitch", "yTapioBOT.Servicos.Twitch\yTapioBOT.Servicos.Twitch.csproj", "{13FAA309-A87B-46FA-8781-5A84D2AE306B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "yTapioBOT.Servicos.Base", "yTapioBOT.Servicos.Base\yTapioBOT.Servicos.Base.csproj", "{3E517735-8EBB-4E36-9A3C-546C26FB2107}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "yTapioBOT.Servicos.Base", "yTapioBOT.Servicos.Base\yTapioBOT.Servicos.Base.csproj", "{3E517735-8EBB-4E36-9A3C-546C26FB2107}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "yTapioBOT.Entidade", "yTapioBOT.Entidade\yTapioBOT.Entidade.csproj", "{C0BBD4FF-1D9E-4970-B2F9-A6BB912CF460}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "yTapioBOT.Entidade", "yTapioBOT.Entidade\yTapioBOT.Entidade.csproj", "{C0BBD4FF-1D9E-4970-B2F9-A6BB912CF460}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "yTapioBOT.BancoDados", "yTapioBOT.BancoDados\yTapioBOT.BancoDados.csproj", "{24BF7D68-0B54-4597-9CED-6E22CE83E031}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "yTapioBOT.BancoDados", "yTapioBOT.BancoDados\yTapioBOT.BancoDados.csproj", "{24BF7D68-0B54-4597-9CED-6E22CE83E031}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "yTapioBOT.Enumeradores", "yTapioBOT.Enumeradores\yTapioBOT.Enumeradores.csproj", "{970FC6F4-8EDC-4436-AB93-A092B3D2E018}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -45,6 +47,10 @@ Global
 		{24BF7D68-0B54-4597-9CED-6E22CE83E031}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{24BF7D68-0B54-4597-9CED-6E22CE83E031}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{24BF7D68-0B54-4597-9CED-6E22CE83E031}.Release|Any CPU.Build.0 = Release|Any CPU
+		{970FC6F4-8EDC-4436-AB93-A092B3D2E018}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{970FC6F4-8EDC-4436-AB93-A092B3D2E018}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{970FC6F4-8EDC-4436-AB93-A092B3D2E018}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{970FC6F4-8EDC-4436-AB93-A092B3D2E018}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

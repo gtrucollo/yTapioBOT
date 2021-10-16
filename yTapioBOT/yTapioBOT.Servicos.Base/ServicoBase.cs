@@ -3,6 +3,8 @@
     using System;
     using System.Collections.Generic;
     using System.Linq;
+    using BancoDados;
+    using Database;
 
     /// <summary>
     /// Classe ServicoBase
@@ -24,6 +26,11 @@
         /// Controle para o listChannel
         /// </summary>
         private IList<CanalBase> listChannel;
+
+        /// <summary>
+        /// Controle para o Banco de Dados
+        /// </summary>
+        private FactoryDatabase database;
         #endregion
 
         #region Construtor
@@ -58,6 +65,23 @@
             set
             {
                 this.listChannel = value;
+            }
+        }
+
+        // <summary>
+        /// Controle para o banco de dados
+        /// </summary>
+        public FactoryDatabase Database
+        {
+            get
+            {
+                if (this.database == null)
+                {
+                    this.database = new FactoryDatabase(Sessao.SessaoControle);
+                }
+
+                // Retorno
+                return this.database;
             }
         }
         #endregion
