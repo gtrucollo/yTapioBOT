@@ -8,6 +8,7 @@
     using TwitchLib.Client;
     using TwitchLib.Client.Events;
     using TwitchLib.Client.Models;
+    using yTapioBOT.Entidade.Database;
 
     /// <summary>
     /// Classe Canal
@@ -30,14 +31,14 @@
         /// <summary>
         /// Inicia uma nova instância de <seealso cref="Canal"/>
         /// </summary>
-        /// <param name="channel">Controle para o canal a ser utilizado</param>
+        /// <param name="canal">Controle para o canal a ser utilizado</param>
         /// <param name="service">Controle do serviço do bot</param>
-        public Canal(string channel, Servico service)
-            : base(channel)
+        public Canal(Plataforma canal, Servico service)
+            : base(canal)
         {
             // Iniciar
             this.client = new TwitchClient();
-            this.client.Initialize(new ConnectionCredentials(service.User, service.Token), channel);
+            this.client.Initialize(new ConnectionCredentials(service.User, service.Token), canal.Url);
 
             // API
             this.twitch = new TwitchAPI();

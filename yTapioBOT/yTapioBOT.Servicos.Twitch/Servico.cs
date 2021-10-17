@@ -55,9 +55,11 @@
         public override void Executar()
         {
             // Selecionar canais
-            IList<Plataforma> listaRetorno = this.Database.Make<PlataformaDb, IList<Plataforma>>(bo => bo.SelecionarTodos());
-
-            this.ListChannel.Add(new Canal("yTapioca", this));
+            IList<Plataforma> listaCanais = this.Database.Make<PlataformaDb, IList<Plataforma>>(bo => bo.SelecionarTodos());
+            foreach (Plataforma plataforma in listaCanais)
+            {
+                this.ListChannel.Add(new Canal(plataforma, this));
+            }
 
             // Executar
             foreach (Canal channel in this.ListChannel)

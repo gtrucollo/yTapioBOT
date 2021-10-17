@@ -3,6 +3,7 @@
     using System;
     using BancoDados;
     using Database;
+    using Entidade.Database;
 
     /// <summary>
     /// Classe CanalBase
@@ -11,9 +12,9 @@
     {
         #region Campos
         /// <summary>
-        /// Controle para channel
+        /// Controle para canal
         /// </summary>
-        private readonly string channel;
+        private readonly Plataforma canal;
 
         /// <summary>
         /// Controle para o Banco de Dados
@@ -25,18 +26,23 @@
         /// <summary>
         /// Inicia uma nova instância de <seealso cref="CanalBase"/>
         /// </summary>
-        /// <param name="channel">Controle para o canal a ser conectado</param>
-        public CanalBase(string channel)
+        /// <param name="canal">Controle para o canal a ser conectado</param>
+        public CanalBase(Plataforma canal)
         {
-            this.channel = channel;
+            this.canal = canal;
         }
         #endregion
 
         #region Propriedades
         /// <summary>
+        /// Obtém Id
+        /// </summary>
+        public Guid Id => this.canal.Id;
+
+        /// <summary>
         /// Obtém Name
         /// </summary>
-        public string Name => this.channel;
+        public string Name => this.canal.Url;
 
         // <summary>
         /// Controle para o banco de dados

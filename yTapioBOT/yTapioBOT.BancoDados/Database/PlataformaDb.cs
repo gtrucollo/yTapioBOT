@@ -21,11 +21,13 @@
         #endregion
 
         #region Métodos
+        #region Públicos
         /// <inheritdoc />
         public override string ObterTabelaNome()
         {
             return "plataforma";
         }
+        #endregion
         #endregion
     }
 }
