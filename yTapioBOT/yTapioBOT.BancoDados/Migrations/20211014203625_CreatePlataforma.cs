@@ -26,6 +26,7 @@
 
             // Cadastrar plataforma padrão
             this.CadastrarNovaPlataforma("yTapioca", Plataforma.TipoEnum.Twitch);
+            this.CadastrarNovaPlataforma("Jaabriel", Plataforma.TipoEnum.Twitch);
         }
 
         /// <inheritdoc />
