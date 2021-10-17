@@ -1,6 +1,7 @@
 ﻿namespace yTapioBOT.Entidade.Base
 {
     using System;
+    using System.ComponentModel.DataAnnotations;
 
     /// <summary>
     /// Classe EntidadeBase
@@ -21,6 +22,7 @@
         /// <summary>
         /// Obtém ou define Id
         /// </summary>
+        [Key]
         public Guid Id { get; set; }
         #endregion
     }

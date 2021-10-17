@@ -2,12 +2,31 @@
 {
     using System;
     using Base;
+    using Dapper.Contrib.Extensions;
 
     /// <summary>
     /// Classe Plataforma
     /// </summary>
-    public partial class Plataforma : EntidadeBase
+    public class Plataforma : EntidadeBase
     {
+        #region Enumeradores
+        /// <summary>
+        /// Enumerador TipoEnum
+        /// </summary>
+        public enum TipoEnum
+        {
+            /// <summary>
+            /// Tipo Twitch
+            /// </summary>
+            Twitch = 0,
+
+            /// <summary>
+            /// Tipo Discord
+            /// </summary>
+            Discord = 1
+        }
+        #endregion
+
         #region Propriedades
         /// <summary>
         /// Obtém ou define Lancamento
@@ -23,6 +42,18 @@
         /// Obtém ou define Tipo
         /// </summary>
         public byte Tipo { get; set; }
+
+        /// <summary>
+        /// Obtém TipoFormatado
+        /// </summary>
+        [Write(false)]
+        public TipoEnum TipoFormatado
+        {
+            get
+            {
+                return (TipoEnum)this.Tipo;
+            }
+        }
 
         /// <summary>
         /// Obtém ou define Status

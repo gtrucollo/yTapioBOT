@@ -3,7 +3,7 @@
     /// <summary>
     /// Enumerador AtivoInativo
     /// </summary>
-    public enum AtivoInativo : byte
+    public enum AtivoInativo
     {
         /// <summary>
         /// Tipo Ativo
