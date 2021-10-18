@@ -17,12 +17,12 @@
         public override void Up()
         {
             Create.Table("plataforma")
-                .WithColumn("Id").AsGuid().NotNullable().PrimaryKey()
-                .WithColumn("Lancamento").AsDateTimeOffset().NotNullable().WithDefaultValue(DateTimeOffset.UtcNow)
-                .WithColumn("Alteracao").AsDateTimeOffset().NotNullable().WithDefaultValue(DateTimeOffset.UtcNow)
-                .WithColumn("Tipo").AsByte().NotNullable()
-                .WithColumn("Status").AsByte().NotNullable()
-                .WithColumn("Url").AsString(50).NotNullable();
+                .WithColumn("id").AsGuid().NotNullable().PrimaryKey()
+                .WithColumn("lancamento").AsDateTimeOffset().NotNullable().WithDefaultValue(DateTimeOffset.UtcNow)
+                .WithColumn("alteracao").AsDateTimeOffset().NotNullable().WithDefaultValue(DateTimeOffset.UtcNow)
+                .WithColumn("tipo").AsByte().NotNullable()
+                .WithColumn("status").AsByte().NotNullable()
+                .WithColumn("url").AsString(50).NotNullable();
 
             // Cadastrar plataforma padrão
             this.CadastrarNovaPlataforma("yTapioca", Plataforma.TipoEnum.Twitch);
@@ -46,10 +46,10 @@
         {
             Insert.IntoTable("plataforma").Row(new
             {
-                Id = Guid.NewGuid(),
-                Tipo = (byte)tipo,
-                Url = url,
-                Status = (byte)AtivoInativo.Ativo
+                id = Guid.NewGuid(),
+                tipo = (byte)tipo,
+                url = url,
+                status = (byte)AtivoInativo.Ativo
             });
         }
         #endregion

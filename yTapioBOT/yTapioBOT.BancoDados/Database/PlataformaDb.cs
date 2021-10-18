@@ -42,7 +42,7 @@
 
             // Query
             return this.SessaoControle
-                .Query<Plataforma>($"SELECT * FROM {this.ObterTabelaNome()} WHERE (\"Status\" = @Status) AND (\"Tipo\" = @Tipo)", parametros)
+                .Query<Plataforma>($"SELECT * FROM {this.ObterTabelaNome()} WHERE (status = @Status) AND (tipo = @Tipo)", parametros)
                 .AsList();
         }
         #endregion
