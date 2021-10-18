@@ -48,7 +48,7 @@
             {
                 id = Guid.NewGuid(),
                 tipo = (byte)tipo,
-                url = url,
+                url,
                 status = (byte)AtivoInativo.Ativo
             });
         }
