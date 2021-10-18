@@ -19,6 +19,7 @@
   <ItemGroup>
     <ProjectReference Include="..\yTapioBOT.Entidade\yTapioBOT.Entidade.csproj" />
     <ProjectReference Include="..\yTapioBOT.Enumeradores\yTapioBOT.Enumeradores.csproj" />
+    <ProjectReference Include="..\yTapioBOT.Library\yTapioBOT.Library.csproj" />
   </ItemGroup>
 
 </Project>

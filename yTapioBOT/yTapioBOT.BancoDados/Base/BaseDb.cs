@@ -3,7 +3,6 @@
     using System;
     using System.Collections.Generic;
     using System.Data;
-    using System.Linq;
     using Dapper;
     using Dapper.Contrib.Extensions;
     using Entidade.Base;
@@ -91,7 +90,7 @@
         /// <returns>A lista de registros encontrada</returns>
         public IList<TType> SelecionarTodos()
         {
-            return this.SessaoControle.Query<TType>(string.Format("SELECT * FROM {0}", this.ObterTabelaNome())).ToList();
+            return this.SessaoControle.Query<TType>(string.Format("SELECT * FROM {0}", this.ObterTabelaNome())).AsList();
         }
         #endregion
 

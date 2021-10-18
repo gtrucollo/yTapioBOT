@@ -2,9 +2,10 @@
 {
     using System.Collections.Generic;
     using System.Threading.Tasks;
+    using BancoDados.Database;
     using Base;
-    using yTapioBOT.BancoDados.Database;
-    using yTapioBOT.Entidade.Database;
+    using Entidade.Database;
+    using Enumeradores;
 
     /// <summary>
     /// Classe Service
@@ -55,7 +56,7 @@
         public override void Executar()
         {
             // Selecionar canais
-            IList<Plataforma> listaCanais = this.Database.Make<PlataformaDb, IList<Plataforma>>(bo => bo.SelecionarTodos());
+            IList<Plataforma> listaCanais = this.Database.Make<PlataformaDb, IList<Plataforma>>(bo => bo.SelecionarTodos(AtivoInativo.Ativo, Plataforma.TipoEnum.Twitch));
             foreach (Plataforma plataforma in listaCanais)
             {
                 this.ListChannel.Add(new Canal(plataforma, this));
