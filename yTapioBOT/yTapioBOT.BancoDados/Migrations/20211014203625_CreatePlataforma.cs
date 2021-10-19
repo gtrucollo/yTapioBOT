@@ -17,7 +17,7 @@
         public override void Up()
         {
             Create.Table("plataforma")
-                .WithColumn("id").AsGuid().NotNullable().PrimaryKey()
+                .WithColumn("id").AsGuid().NotNullable().PrimaryKey().Unique()
                 .WithColumn("lancamento").AsDateTimeOffset().NotNullable().WithDefaultValue(DateTimeOffset.UtcNow)
                 .WithColumn("alteracao").AsDateTimeOffset().NotNullable().WithDefaultValue(DateTimeOffset.UtcNow)
                 .WithColumn("tipo").AsByte().NotNullable()
