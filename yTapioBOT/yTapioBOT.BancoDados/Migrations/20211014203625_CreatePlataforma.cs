@@ -1,9 +1,9 @@
 ﻿namespace yTapioBOT.BancoDados.Migrations
 {
     using System;
+    using Entidade.Database;
+    using Enumeradores;
     using FluentMigrator;
-    using yTapioBOT.Entidade.Database;
-    using yTapioBOT.Enumeradores;
 
     /// <summary>
     /// Classe CreatePlataforma

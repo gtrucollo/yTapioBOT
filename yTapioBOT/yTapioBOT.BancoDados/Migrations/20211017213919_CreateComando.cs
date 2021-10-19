@@ -3,6 +3,9 @@
     using System;
     using FluentMigrator;
 
+    /// <summary>
+    /// Classe CreateComando
+    /// </summary>
     [Migration(20211017213919)]
     public class CreateComando : Migration
     {
