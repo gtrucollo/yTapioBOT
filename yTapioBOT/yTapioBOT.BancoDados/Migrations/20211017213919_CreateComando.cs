@@ -16,10 +16,11 @@
         {
             Create.Table("comando")
               .WithColumn("id").AsGuid().NotNullable().PrimaryKey().Unique()
-              .WithColumn("id_plataforma").AsGuid().ForeignKey("plataforma", "id")
+              .WithColumn("id_plataforma").AsGuid().ForeignKey("plataforma", "id").NotNullable()
               .WithColumn("lancamento").AsDateTimeOffset().NotNullable().WithDefaultValue(DateTimeOffset.UtcNow)
               .WithColumn("alteracao").AsDateTimeOffset().NotNullable().WithDefaultValue(DateTimeOffset.UtcNow)
               .WithColumn("conteudo").AsString(500).NotNullable()
+              .WithColumn("nome").AsString(100).NotNullable()
               .WithColumn("contagem").AsInt64().Nullable()
               .WithColumn("administrador").AsBoolean().NotNullable().WithDefaultValue(false);
         }

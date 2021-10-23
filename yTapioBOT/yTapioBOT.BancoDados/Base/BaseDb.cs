@@ -4,14 +4,13 @@
     using System.Collections.Generic;
     using System.Data;
     using Dapper;
-    using Dapper.Contrib.Extensions;
-    using Entidade.Base;
+    using Dapper.Database.Extensions;
     using Npgsql;
 
     /// <summary>
     /// Classe BaseDatabase
     /// </summary>
-    public abstract class BaseDb<TType> where TType : EntidadeBase
+    public abstract class BaseDb<TType> where TType : class
     {
         #region Campos
         /// <summary>
@@ -158,7 +157,7 @@
         /// </summary>      
         /// <param name="objeto">Parâmetro Objeto</param>
         /// <returns>O objeto após a persistência</returns>
-        public virtual TType InsertUpdate(TType objeto)
+        public virtual TType Insert(TType objeto)
         {
             try
             {
@@ -188,7 +187,7 @@
         /// <param name="user">O usuário do controle de acesso</param>
         /// <param name="listaObjetos">Lista com os Objetos</param>
         /// <param name="logInformacao">Informação adicional para o Log</param>
-        public void InsertUpdate(List<TType> listaObjetos)
+        public void Insert(List<TType> listaObjetos)
         {
             // Validar
             if (listaObjetos.Count == 0)
@@ -202,7 +201,69 @@
                 this.IniciarTransacao();
 
                 // Salvar todos os objetos
-                listaObjetos.ForEach(x => this.InsertUpdate(x));
+                listaObjetos.ForEach(x => this.Insert(x));
+
+                // Commit Transação
+                this.GravarTransacao();
+            }
+            catch
+            {
+                // Rollback Transação
+                this.CancelarTransacao();
+                throw;
+            }
+        }
+
+        /// <summary>
+        /// Insere ou altera um objeto no banco de dados
+        /// </summary>      
+        /// <param name="objeto">Parâmetro Objeto</param>
+        /// <returns>O objeto após a persistência</returns>
+        public virtual TType Update(TType objeto)
+        {
+            try
+            {
+                // Begin Transação
+                this.IniciarTransacao();
+
+                // Atualizar
+                this.SessaoControle.Update(objeto);
+
+                // Commit Transação
+                this.GravarTransacao();
+
+                // OK
+                return objeto;
+            }
+            catch
+            {
+                // Rollback Transação
+                this.CancelarTransacao();
+                throw;
+            }
+        }
+
+        /// <summary>
+        /// Insere ou altera vários objetos no banco de dados
+        /// </summary>
+        /// <param name="user">O usuário do controle de acesso</param>
+        /// <param name="listaObjetos">Lista com os Objetos</param>
+        /// <param name="logInformacao">Informação adicional para o Log</param>
+        public void Update(List<TType> listaObjetos)
+        {
+            // Validar
+            if (listaObjetos.Count == 0)
+            {
+                return;
+            }
+
+            try
+            {
+                // Begin Transação
+                this.IniciarTransacao();
+
+                // Salvar todos os objetos
+                listaObjetos.ForEach(x => this.Update(x));
 
                 // Commit Transação
                 this.GravarTransacao();
