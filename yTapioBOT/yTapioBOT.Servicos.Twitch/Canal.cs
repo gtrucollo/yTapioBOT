@@ -8,6 +8,7 @@
     using TwitchLib.Client;
     using TwitchLib.Client.Events;
     using TwitchLib.Client.Models;
+    using yTapioBOT.BancoDados.Database;
     using yTapioBOT.Entidade.Database;
 
     /// <summary>
@@ -102,6 +103,7 @@
         #endregion
 
         #region Privados
+        #region Twitch
         /// <summary>
         /// Método Client_OnConnected
         /// </summary>
@@ -169,6 +171,15 @@
                     return;
                 }
 
+                // Selecionar comando salvo
+                Comando comandoControle = this.Database.Make<ComandoDb, Comando>(bo => bo.SelecionarComando(this.Id, e.Command.CommandText));
+                if (comandoControle != null)
+                {
+                    // Enviar mensagem
+                    this.SendChannelMessage(comandoControle.Conteudo);
+                    return;
+                }
+
                 // Obter classe
                 Type classeComando = Assembly.GetAssembly(this.GetType())
                     .GetTypes()
@@ -216,6 +227,7 @@
                    exp.Message));
             }
         }
+        #endregion
         #endregion
         #endregion
     }
