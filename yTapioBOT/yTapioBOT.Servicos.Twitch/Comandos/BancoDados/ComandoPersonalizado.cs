@@ -120,7 +120,7 @@
                     this.Canal.Database.Make<ComandoDb, Guid?>(bo => bo.GravarAtualizarComando(this.Canal.Id, this.Nome, this.Conteudo));
 
                     // Mensagem no chat
-                    this.Canal.SendChannelMessage($"Comando {this.Nome} Criado/Atualizado com sucesso!");
+                    this.Canal.SendChannelMessage($"Comando {this.Nome} criado/atualizado com sucesso!");
                     break;
 
                 case AcaoEnum.Remover:
