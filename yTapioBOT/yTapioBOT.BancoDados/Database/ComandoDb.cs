@@ -1,9 +1,8 @@
 ﻿namespace yTapioBOT.BancoDados.Database
 {
     using System;
-    using System.Data;
     using Base;
-    using Dapper;
+    using Dapper.Database.Extensions;
     using Entidade.Database;
     using Npgsql;
 
@@ -33,13 +32,8 @@
         /// <returns>O comando localizado</returns>
         public Comando SelecionarComando(Guid idPlataforma, string nome)
         {
-            // Parâmetros
-            DynamicParameters parametros = new();
-            parametros.Add(nameof(Comando.IdPlataforma), idPlataforma, DbType.Guid);
-            parametros.Add(nameof(Comando.Nome), nome, DbType.String);
-
             // Retorno
-            return this.SessaoControle.QueryFirstOrDefault<Comando>("SELECT * FROM comando WHERE (id_plataforma = @IdPlataforma) AND (nome = @Nome)", parametros);
+            return this.SessaoControle.Get<Comando>("WHERE (id_plataforma = @IdPlataforma) AND (nome = @Nome)", new { IdPlataforma = idPlataforma, Nome = nome });
         }
 
         /// <summary>
@@ -79,6 +73,16 @@
 
             // Id
             return comando.Id;
+        }
+
+        /// <summary>
+        /// Remover comando
+        /// </summary>
+        /// <param name="idPlataforma">Identificador da plataforma</param>
+        /// <param name="nome">Nome do comando</param>
+        public void Remover(Guid idPlataforma, string nome)
+        {
+            this.Delete(this.SelecionarComando(idPlataforma, nome));
         }
         #endregion
 

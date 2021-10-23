@@ -105,17 +105,17 @@
         /// <inheritdoc/>
         public override void Executar()
         {
-            // Validar
-            if (string.IsNullOrWhiteSpace(this.Conteudo))
-            {
-                this.Canal.SendChannelMessage("Argumentos inválidos, não foi informado o conteudo do comando.");
-                return;
-            }
-
             switch (this.Acao)
             {
                 case AcaoEnum.Adicionar:
                 case AcaoEnum.Atualizar:
+                    // Validar
+                    if (string.IsNullOrWhiteSpace(this.Conteudo))
+                    {
+                        this.Canal.SendChannelMessage("Argumentos inválidos, não foi informado o conteudo do comando.");
+                        return;
+                    }
+
                     // Gravar/Atualizar
                     this.Canal.Database.Make<ComandoDb, Guid?>(bo => bo.GravarAtualizarComando(this.Canal.Id, this.Nome, this.Conteudo));
 
@@ -124,6 +124,18 @@
                     break;
 
                 case AcaoEnum.Remover:
+                    // Validar
+                    if (string.IsNullOrWhiteSpace(this.Nome))
+                    {
+                        this.Canal.SendChannelMessage("Argumentos inválidos, não foi informado o nome do comando.");
+                        return;
+                    }
+
+                    // Remover
+                    this.Canal.Database.Make<ComandoDb>(bo => bo.Remover(this.Canal.Id, this.Nome));
+
+                    // Mensagem no chat
+                    this.Canal.SendChannelMessage($"Comando {this.Nome} removido com sucesso!");
                     break;
             }
         }
