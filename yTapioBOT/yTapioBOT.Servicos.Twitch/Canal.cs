@@ -171,51 +171,13 @@
                     return;
                 }
 
-                // Selecionar comando salvo
-                Comando comandoControle = this.Database.Make<ComandoDb, Comando>(bo => bo.SelecionarComando(this.Id, e.Command.CommandText));
-                if (comandoControle != null)
+                // Executar comando
+                if (this.ExecutarComandoBancoDados(e))
                 {
-                    // Enviar mensagem
-                    this.SendChannelMessage(comandoControle.Conteudo);
                     return;
                 }
 
-                // Obter classe
-                Type classeComando = Assembly.GetAssembly(this.GetType())
-                    .GetTypes()
-                    .Where(x => x.GetCustomAttribute<ComandoBase.ComandoAttribute>()?.IdDescricao == e.Command.CommandIdentifier.ToString())
-                    .Where(x => x.GetCustomAttribute<ComandoBase.ComandoAttribute>(true)?.Nome == e.Command.CommandText)
-                    .Select(x => x)
-                    .FirstOrDefault();
-                if (classeComando == null)
-                {
-                    throw new Exception("Nenhuma implementação foi localizada.");
-                }
-
-                // Instânciar classe
-                string[] argumentos = e.Command.ArgumentsAsList.Where(x => !string.IsNullOrEmpty(x)).ToArray();
-                if (Activator.CreateInstance(classeComando, this, argumentos) is not ComandoBase comando)
-                {
-                    throw new Exception("Não foi possivel instânciar a classe");
-                }
-
-                // Executar
-                switch (!comando.Moderador)
-                {
-                    case true:
-                        comando.Executar();
-                        break;
-
-                    default:
-                        // Validar execução
-                        if ((!e.Command.ChatMessage.IsBroadcaster) && (!e.Command.ChatMessage.IsModerator))
-                        {
-                            return;
-                        }
-
-                        comando.Executar();
-                        break;
-                }
+                this.ExecutarComandoEstatico(e);
             }
             catch (Exception exp)
             {
@@ -226,6 +188,74 @@
                    e.Command.CommandText,
                    exp.Message));
             }
+        }
+        #endregion
+
+        #region Comandos
+        /// <summary>
+        /// Executar o comando do banco de dados se existente
+        /// </summary>
+        /// <param name="e">Parâmetro OnChatCommandReceivedArgs</param>
+        /// <returns>Se o comando foi encontrado e executado</returns>
+        private bool ExecutarComandoBancoDados(OnChatCommandReceivedArgs e)
+        {
+            // Selecionar comando salvo
+            Comando comando = this.Database.Make<ComandoDb, Comando>(bo => bo.SelecionarComando(this.Id, e.Command.CommandText));
+            if (comando == null)
+            {
+                return false;
+            }
+
+            // Enviar mensagem
+            this.SendChannelMessage(comando.Conteudo);
+            return true;
+        }
+
+        /// <summary>
+        /// Executar o comando do estatico se existente
+        /// </summary>
+        /// <param name="e">Parâmetro OnChatCommandReceivedArgs</param>
+        /// <returns>Se o comando foi encontrado e executado</returns>
+        private bool ExecutarComandoEstatico(OnChatCommandReceivedArgs e)
+        {
+            // Obter classe
+            Type classeComando = Assembly.GetAssembly(this.GetType())
+                .GetTypes()
+                .Where(x => x.GetCustomAttribute<ComandoBase.ComandoAttribute>()?.IdDescricao == e.Command.CommandIdentifier.ToString())
+                .Where(x => x.GetCustomAttribute<ComandoBase.ComandoAttribute>(true)?.Nome == e.Command.CommandText)
+                .Select(x => x)
+                .FirstOrDefault();
+            if (classeComando == null)
+            {
+                throw new Exception("Nenhuma implementação foi localizada.");
+            }
+
+            // Instânciar classe
+            string[] argumentos = e.Command.ArgumentsAsList.Where(x => !string.IsNullOrEmpty(x)).ToArray();
+            if (Activator.CreateInstance(classeComando, this, argumentos) is not ComandoBase comando)
+            {
+                throw new Exception("Não foi possivel instânciar a classe");
+            }
+
+            // Executar
+            switch (!comando.Moderador)
+            {
+                case true:
+                    comando.Executar();
+                    break;
+
+                default:
+                    // Validar execução
+                    if ((!e.Command.ChatMessage.IsBroadcaster) && (!e.Command.ChatMessage.IsModerator))
+                    {
+                        return false;
+                    }
+
+                    comando.Executar();
+                    break;
+            }
+
+            return true;
         }
         #endregion
         #endregion
