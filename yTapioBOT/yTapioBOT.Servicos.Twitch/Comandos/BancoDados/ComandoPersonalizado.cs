@@ -105,6 +105,13 @@
         /// <inheritdoc/>
         public override void Executar()
         {
+            // Validar
+            if (string.IsNullOrWhiteSpace(this.Nome))
+            {
+                this.Canal.SendChannelMessage("Argumentos inválidos, não foi informado o nome do comando.");
+                return;
+            }
+
             switch (this.Acao)
             {
                 case AcaoEnum.Adicionar:
@@ -124,13 +131,6 @@
                     break;
 
                 case AcaoEnum.Remover:
-                    // Validar
-                    if (string.IsNullOrWhiteSpace(this.Nome))
-                    {
-                        this.Canal.SendChannelMessage("Argumentos inválidos, não foi informado o nome do comando.");
-                        return;
-                    }
-
                     // Remover
                     this.Canal.Database.Make<ComandoDb>(bo => bo.Remover(this.Canal.Id, this.Nome));
 
