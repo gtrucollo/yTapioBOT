@@ -4,6 +4,8 @@
     using System.Linq;
     using System.Reflection;
     using Base;
+    using yTapioBOT.BancoDados.Database;
+    using yTapioBOT.Entidade.Database;
 
     /// <summary>
     /// Classe Status
@@ -49,6 +51,11 @@
             foreach (ComandoAttribute comando in listaComandos)
             {
                 mensagem += string.Format("{0}{1} - ({2})", comando.IdDescricao, comando.Nome, comando.Descricao);
+            }
+
+            foreach (Comando comando in this.Canal.Database.Make<ComandoDb, IList<Comando>>(bo => bo.SelecionarTodos()))
+            {
+                mensagem += string.Format("!{0}", comando.Nome);
             }
 
             // Mensagem
