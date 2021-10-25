@@ -96,7 +96,7 @@
                 }
 
                 // Retorno
-                return this.Argumentos[2];
+                return string.Join(" ", this.Argumentos.Skip(2).Select(x => x));
             }
         }
         #endregion
