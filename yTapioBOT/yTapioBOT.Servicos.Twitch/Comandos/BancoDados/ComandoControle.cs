@@ -9,7 +9,7 @@
     /// Classe ComandoPersonalizado
     /// </summary>
     [Comando(Id.Exclamacao, "comando", "Controla os comandos personalizados (add, update, del)")]
-    public class ComandoPersonalizado : ComandoBase
+    public class ComandoControle : ComandoBase
     {
         #region Enumerador
         /// <summary>
@@ -36,11 +36,11 @@
 
         #region Construtor
         /// <summary>
-        /// Incia uma nova instância de <seealso cref="ComandoPersonalizado"/>
+        /// Incia uma nova instância de <seealso cref="ComandoControle"/>
         /// </summary>
         /// <param name="canal">Objeto com as informações do canal</param>
         /// <param name="argumentos">Relação de argumentos do comando</param>
-        public ComandoPersonalizado(Canal canal, params string[] argumentos)
+        public ComandoControle(Canal canal, params string[] argumentos)
             : base(canal, argumentos)
         {
         }

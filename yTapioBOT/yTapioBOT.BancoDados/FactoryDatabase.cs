@@ -1,8 +1,8 @@
 ﻿namespace yTapioBOT.Database
 {
     using System;
+    using BancoDados;
     using Npgsql;
-    using yTapioBOT.BancoDados;
 
     /// <summary>
     /// Classe FactoryDatabase
