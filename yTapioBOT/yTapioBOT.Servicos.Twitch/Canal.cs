@@ -243,24 +243,26 @@
         /// <returns>Se o comando foi encontrado e executado</returns>
         private bool ExecutarComandoEstatico(OnChatCommandReceivedArgs e)
         {
+            // Formatar argumentos
+            string[] argumentos = e.Command.ArgumentsAsList
+                .Where(x => !string.IsNullOrEmpty(x))
+                .ToArray();
+
             // Obter classe
             Type classeComando = Assembly.GetAssembly(this.GetType())
                 .GetTypes()
+                .Where(x => x.BaseType == typeof(ComandoBase))
                 .Where(x => x.GetCustomAttribute<ComandoBase.ComandoAttribute>()?.IdDescricao == e.Command.CommandIdentifier.ToString())
                 .Where(x => x.GetCustomAttribute<ComandoBase.ComandoAttribute>(true)?.Nome == e.Command.CommandText)
                 .Select(x => x)
                 .FirstOrDefault();
             if (classeComando == null)
             {
-                throw new Exception("Nenhuma implementação foi localizada.");
+                return false;
             }
 
-            // Instânciar classe
-            string[] argumentos = e.Command.ArgumentsAsList.Where(x => !string.IsNullOrEmpty(x)).ToArray();
-            if (Activator.CreateInstance(classeComando, this, argumentos) is not ComandoBase comando)
-            {
-                throw new Exception("Não foi possivel instânciar a classe");
-            }
+            // Instâciar comando
+            ComandoBase comando = Activator.CreateInstance(classeComando, this, argumentos) as ComandoBase;
 
             // Executar
             switch (!comando.Moderador)
