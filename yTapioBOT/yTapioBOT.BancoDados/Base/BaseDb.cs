@@ -4,6 +4,7 @@
     using System.Collections.Generic;
     using System.Data;
     using System.Linq;
+    using System.Reflection;
     using Dapper.Database.Extensions;
     using Npgsql;
 
@@ -164,6 +165,20 @@
                 // Begin Transação
                 this.IniciarTransacao();
 
+                // Atualizar a data de alteração
+                PropertyInfo propriedade = objeto.GetType().GetProperties().Where(x => x.Name.ToLower() == "lancamento").FirstOrDefault();
+                if (propriedade != null)
+                {
+                    propriedade.SetValue(objeto, DateTimeOffset.UtcNow);
+                }
+
+                // Atualizar a data de alteração
+                propriedade = objeto.GetType().GetProperties().Where(x => x.Name.ToLower() == "alteracao").FirstOrDefault();
+                if (propriedade != null)
+                {
+                    propriedade.SetValue(objeto, DateTimeOffset.UtcNow);
+                }
+
                 // Atualizar
                 this.SessaoControle.Insert(objeto);
 
@@ -225,6 +240,13 @@
             {
                 // Begin Transação
                 this.IniciarTransacao();
+
+                // Atualizar a data de alteração
+                PropertyInfo propriedade = objeto.GetType().GetProperties().Where(x => x.Name.ToLower() == "alteracao").FirstOrDefault();
+                if (propriedade != null)
+                {
+                    propriedade.SetValue(objeto, DateTimeOffset.UtcNow);
+                }
 
                 // Atualizar
                 this.SessaoControle.Update(objeto);
