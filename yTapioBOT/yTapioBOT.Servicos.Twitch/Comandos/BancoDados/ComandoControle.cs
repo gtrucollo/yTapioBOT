@@ -30,7 +30,12 @@
             /// <summary>
             /// Ação Remover
             /// </summary>
-            Remover = 2
+            Remover = 2,
+
+            /// <summary>
+            /// Ação Atribuir
+            /// </summary>
+            Atribuir = 3,
         }
         #endregion
 
@@ -59,6 +64,7 @@
                     "add" => AcaoEnum.Adicionar,
                     "update" => AcaoEnum.Atualizar,
                     "del" or "delete" => AcaoEnum.Remover,
+                    "setcount" => AcaoEnum.Atribuir,
                     _ => throw new Exception($"Ação { this.Argumentos.FirstOrDefault()} não existe"),
                 };
             }
@@ -136,6 +142,20 @@
 
                     // Mensagem no chat
                     this.Canal.SendChannelMessage($"Comando {this.Nome} removido com sucesso!");
+                    break;
+
+                case AcaoEnum.Atribuir:
+                    if (Convert.ToInt64(this.Conteudo) > int.MaxValue)
+                    {
+                        this.Canal.SendChannelMessage("Valor informado é invalido");
+                        return;
+                    }
+
+                    // Gravar/Atualizar
+                    this.Canal.Database.Make<ComandoDb>(bo => bo.AtualizarContagem(this.Canal.Id, this.Nome, Convert.ToInt32(this.Conteudo)));
+
+                    // Mensagem no chat
+                    this.Canal.SendChannelMessage($"Comando {this.Nome} criado/atualizado com sucesso!");
                     break;
             }
         }

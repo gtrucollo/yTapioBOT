@@ -103,6 +103,28 @@
         {
             this.Delete(this.SelecionarComando(idPlataforma, nome, false));
         }
+
+        /// <summary>
+        /// Atualizar a contagem
+        /// </summary>
+        /// <param name="idPlataforma">Identificador da plataforma</param>
+        /// <param name="nome">Nome do comando</param>
+        /// <param name="contagem">Contagem a ser atualizada</param>
+        public void AtualizarContagem(Guid idPlataforma, string nome, int contagem)
+        {
+            // Selecionar
+            Comando retorno = this.SelecionarComando(idPlataforma, nome, false);
+            if (retorno == null)
+            {
+                return;
+            }
+
+            // Atualizar
+            retorno.Contagem = contagem;
+
+            // Salvar
+            this.Update(retorno);
+        }
         #endregion
 
         #region Diversos
