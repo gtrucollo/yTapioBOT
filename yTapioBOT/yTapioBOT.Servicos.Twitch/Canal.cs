@@ -213,7 +213,7 @@
             }
 
             // Enviar mensagem
-            this.SendChannelMessage(comando.Conteudo);
+            this.SendChannelMessage(GerenciadorToken.FormatarConteudo(comando.Conteudo, e.ChatMessage));
             return true;
         }
 
@@ -232,7 +232,7 @@
             }
 
             // Enviar mensagem
-            this.SendChannelMessage(comando.Conteudo);
+            this.SendChannelMessage(GerenciadorToken.FormatarConteudo(comando.Conteudo, e.Command.ChatMessage));
             return true;
         }
 
