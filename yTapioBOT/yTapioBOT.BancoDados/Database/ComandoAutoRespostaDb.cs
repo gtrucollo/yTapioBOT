@@ -33,7 +33,7 @@
         public ComandoAutoResposta SelecionarComando(Guid idPlataforma, string nome)
         {
             // Retorno
-            return this.SessaoControle.Get<ComandoAutoResposta>("WHERE (id_plataforma = @IdPlataforma) AND (nome = @Nome)", new { IdPlataforma = idPlataforma, Nome = nome });
+            return this.SessaoControle.Get<ComandoAutoResposta>("WHERE (id_plataforma = @IdPlataforma) AND (strpos(@Nome, nome) > 0) ORDER BY id LIMIT 1", new { IdPlataforma = idPlataforma, Nome = string.Format("'{0}'", nome?.Trim()) });
         }
 
         /// <summary>

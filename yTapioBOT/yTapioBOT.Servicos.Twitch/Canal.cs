@@ -153,6 +153,12 @@
         /// <param name="e">Parâmetro OnMessageReceivedArgs</param>
         private void Client_OnMessageReived(object sender, OnMessageReceivedArgs e)
         {
+            if (e.ChatMessage == null)
+            {
+                return;
+            }
+
+            this.ExecutarComandoAutoRespostaBancoDados(e);
         }
 
         /// <summary>
@@ -192,6 +198,25 @@
         #endregion
 
         #region Comandos
+        /// <summary>
+        /// Executar o comando do banco de dados se existente
+        /// </summary>
+        /// <param name="e">Parâmetro OnMessageReceivedArgs</param>
+        /// <returns>Se o comando foi encontrado e executado</returns>
+        private bool ExecutarComandoAutoRespostaBancoDados(OnMessageReceivedArgs e)
+        {
+            // Selecionar comando salvo
+            ComandoAutoResposta comando = this.Database.Make<ComandoAutoRespostaDb, ComandoAutoResposta>(bo => bo.SelecionarComando(this.Id, e.ChatMessage.Message));
+            if (comando == null)
+            {
+                return false;
+            }
+
+            // Enviar mensagem
+            this.SendChannelMessage(comando.Conteudo);
+            return true;
+        }
+
         /// <summary>
         /// Executar o comando do banco de dados se existente
         /// </summary>
