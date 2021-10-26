@@ -30,10 +30,29 @@
         /// <param name="idPlataforma">Identificador da plataforma</param>
         /// <param name="nome">Nome do comando</param>
         /// <returns>O comando localizado</returns>
-        public Comando SelecionarComando(Guid idPlataforma, string nome)
+        public Comando SelecionarComando(Guid idPlataforma, string nome, bool atualizarQuantidade)
         {
+            // Selecionar
+            Comando retorno = this.SessaoControle.Get<Comando>("WHERE (id_plataforma = @IdPlataforma) AND (nome = @Nome)", new { IdPlataforma = idPlataforma, Nome = nome });
+            if (retorno == null)
+            {
+                return retorno;
+            }
+
+            // Atualizar contagem
+            if (retorno.Conteudo.Contains("%COMMAND_COUNT%") && atualizarQuantidade)
+            {
+                retorno.Contagem = (retorno.Contagem ?? 0) + 1;
+
+                // Salvar
+                this.Update(retorno);
+
+                // Selecionar novamente
+                retorno = this.SelecionarComando(idPlataforma, nome, false);
+            }
+
             // Retorno
-            return this.SessaoControle.Get<Comando>("WHERE (id_plataforma = @IdPlataforma) AND (nome = @Nome)", new { IdPlataforma = idPlataforma, Nome = nome });
+            return retorno;
         }
 
         /// <summary>
@@ -46,7 +65,7 @@
         public Guid? GravarAtualizarComando(Guid idPlataforma, string nome, string conteudo)
         {
             // Selecionar comando
-            Comando comando = this.SelecionarComando(idPlataforma, nome);
+            Comando comando = this.SelecionarComando(idPlataforma, nome, false);
             if (comando == null)
             {
                 comando = new Comando() { IdPlataforma = idPlataforma, Nome = nome };
@@ -82,7 +101,7 @@
         /// <param name="nome">Nome do comando</param>
         public void Remover(Guid idPlataforma, string nome)
         {
-            this.Delete(this.SelecionarComando(idPlataforma, nome));
+            this.Delete(this.SelecionarComando(idPlataforma, nome, false));
         }
         #endregion
 

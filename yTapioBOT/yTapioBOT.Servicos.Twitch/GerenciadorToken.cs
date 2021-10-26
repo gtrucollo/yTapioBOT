@@ -98,7 +98,7 @@
             // Command - Created at
             if (conteudo.Contains(Enumeradores.ObterDescricao(Token.COMMAND_CREATED_AT)))
             {
-                conteudo = conteudo.Replace(Enumeradores.ObterDescricao(Token.COMMAND_CREATED_AT), string.Format("{0:dd/mm/yyyy}", comando?.Lancamento));
+                conteudo = conteudo.Replace(Enumeradores.ObterDescricao(Token.COMMAND_CREATED_AT), string.Format("{0:d}", comando?.Lancamento));
             }
 
             // Retorno

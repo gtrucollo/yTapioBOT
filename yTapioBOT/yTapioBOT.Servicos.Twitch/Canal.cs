@@ -213,7 +213,7 @@
             }
 
             // Enviar mensagem
-            this.SendChannelMessage(GerenciadorToken.FormatarConteudo(comando.Conteudo, e.ChatMessage));
+            this.SendChannelMessage(GerenciadorToken.FormatarConteudo(comando.Conteudo, e.ChatMessage, comando));
             return true;
         }
 
@@ -225,14 +225,14 @@
         private bool ExecutarComandoBancoDados(OnChatCommandReceivedArgs e)
         {
             // Selecionar comando salvo
-            Comando comando = this.Database.Make<ComandoDb, Comando>(bo => bo.SelecionarComando(this.Id, e.Command.CommandText));
+            Comando comando = this.Database.Make<ComandoDb, Comando>(bo => bo.SelecionarComando(this.Id, e.Command.CommandText, true));
             if (comando == null)
             {
                 return false;
             }
 
             // Enviar mensagem
-            this.SendChannelMessage(GerenciadorToken.FormatarConteudo(comando.Conteudo, e.Command.ChatMessage));
+            this.SendChannelMessage(GerenciadorToken.FormatarConteudo(comando.Conteudo, e.Command.ChatMessage, comando));
             return true;
         }
 
