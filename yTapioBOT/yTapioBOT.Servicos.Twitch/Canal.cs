@@ -3,13 +3,13 @@
     using System;
     using System.Linq;
     using System.Reflection;
+    using BancoDados.Database;
     using Base;
+    using Entidade.Database;
     using TwitchLib.Api;
     using TwitchLib.Client;
     using TwitchLib.Client.Events;
     using TwitchLib.Client.Models;
-    using yTapioBOT.BancoDados.Database;
-    using yTapioBOT.Entidade.Database;
 
     /// <summary>
     /// Classe Canal

@@ -126,14 +126,6 @@
             this.Update(retorno);
         }
         #endregion
-
-        #region Diversos
-        /// <inheritdoc />
-        public override string ObterTabelaNome()
-        {
-            return "comando";
-        }
-        #endregion
         #endregion
     }
 }

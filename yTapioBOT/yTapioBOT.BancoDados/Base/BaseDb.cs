@@ -47,10 +47,12 @@
                 if (sessaoControle == null)
                 {
                     sessaoControle = Sessao.SessaoControle;
-                    if (sessaoControle.State == ConnectionState.Open)
-                    {
-                        sessaoControle.Open();
-                    }
+                }
+
+                // Verificar status da conexão
+                if (sessaoControle.State != ConnectionState.Open)
+                {
+                    sessaoControle.Open();
                 }
 
                 return sessaoControle;
@@ -59,14 +61,6 @@
         #endregion
 
         #region Métodos
-        #region Abstratos
-        /// <summary>
-        /// Obter o nome da tabela
-        /// </summary>
-        /// <returns>O nome da tabela no banco de dados</returns>
-        public abstract string ObterTabelaNome();
-        #endregion
-
         #region Diversos
         /// <summary>
         /// Obter o valor total de registros
@@ -74,14 +68,7 @@
         /// <returns>O Valor total de registros</returns>
         public long ObterRelacaoTotal()
         {
-            // Using
-            using NpgsqlCommand comando = new(null, this.SessaoControle);
-
-            // Comando
-            comando.CommandText = string.Format("SELECT COUNT(*) FROM {0}", this.ObterTabelaNome());
-
-            // Retorno
-            return (long)comando.ExecuteScalar();
+            return this.SessaoControle.Count<TType>();
         }
 
         /// <summary>
@@ -90,7 +77,7 @@
         /// <returns>A lista de registros encontrada</returns>
         public IList<TType> SelecionarTodos()
         {
-            return this.SessaoControle.GetList<TType>(string.Format("SELECT * FROM {0}", this.ObterTabelaNome())).ToList();
+            return this.SessaoControle.GetList<TType>().ToList();
         }
         #endregion
 

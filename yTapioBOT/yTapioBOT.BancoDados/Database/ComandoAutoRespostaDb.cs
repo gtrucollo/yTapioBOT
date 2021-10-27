@@ -85,14 +85,6 @@
             this.Delete(this.SelecionarComando(idPlataforma, nome));
         }
         #endregion
-
-        #region Diversos
-        /// <inheritdoc />
-        public override string ObterTabelaNome()
-        {
-            return "comando_auto_resposta";
-        }
-        #endregion
         #endregion
     }
 }
